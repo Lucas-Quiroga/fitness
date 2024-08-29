@@ -1,0 +1,156 @@
+---
+interface Card {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const CARDS_INFO: Card[] = [
+  {
+    title: "Workout Videos",
+    description: "Access to hundreds of free, full-length workout videos.",
+    image: "/arrowright.png",
+  },
+  {
+    title: "Workout Programs",
+    description: "Affordable and effective workout programs.",
+    image: "/arrowright.png",
+  },
+  {
+    title: "Meal Plans",
+    description: "Plans built with registered dietitians and nutritionists.",
+    image: "/arrowright.png",
+  },
+  {
+    title: "WO Plus ALL ACCESS",
+    description: "Add powerful features to your membership.",
+    image: "/arrowright.png",
+  },
+];
+---
+
+<section class="programs">
+  <div class="programs__intro">
+    <h3 class="programs__title">Not sure where to start?</h3>
+    <p class="programs__description">
+      Programs offer day-to-day guidance on an interactive calendar to keep you
+      on track.
+    </p>
+  </div>
+
+  <div class="programs__slider">
+    <swiper-container class="programs__swiper" pagination="true" loop="true">
+      {
+        CARDS_INFO.map((card, index) => (
+          <swiper-slide
+            class={`programs__slide programs__slide-${index}`}
+            key={index}
+            space-between="20"
+          >
+            <div class="programs__slide-content">
+              <div class="programs__text">
+                <h4 class="programs__slide-title">{card.title}</h4>
+                <p class="programs__slide-description">{card.description}</p>
+              </div>
+              {card.image && (
+                <img
+                  class="programs__slide-image"
+                  src={card.image}
+                  alt={`${card.title} image`}
+                />
+              )}
+            </div>
+          </swiper-slide>
+        ))
+      }
+    </swiper-container>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 575px) {
+    .programs {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 1rem;
+    }
+
+    .programs__intro {
+      text-align: center;
+    }
+
+    .programs__title {
+      font-size: 30px;
+      line-height: 40px;
+      color: #fafaf9;
+      margin: 0;
+    }
+
+    .programs__description {
+      color: #efede8;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #323443;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 190px;
+    }
+
+    .programs__slide-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+      margin: 0;
+      text-align: start;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .programs__slide-0 {
+      background-color: #323443;
+    }
+
+    .programs__slide-1 {
+      background-color: #232532;
+    }
+
+    .programs__slide-2 {
+      background-color: #4f5261;
+    }
+
+    .programs__slide-3 {
+      background-color: #63687a;
+    }
+
+    .programs__text {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      width: 250px;
+      gap: 10px;
+    }
+
+    .programs__slide-title {
+      color: #fafaf9;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .programs__slide-description {
+      color: #efede8;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .programs__slide-image {
+      width: auto;
+    }
+  }
+</style>
