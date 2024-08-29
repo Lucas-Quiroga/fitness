@@ -1,158 +1,170 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
-interface NavLink{
-    href: string;
-    text: string;
+interface NavLink {
+  href: string;
+  text: string;
 }
 
 const navLinks: NavLink[] = [
-  { href: '#workouts', text: 'Workouts' },
-  { href: '#programs', text: 'Programs' },
-  { href: '#healthy-living', text: 'Healthy Living' },
-  { href: '#community', text: 'Community' },
-  { href: '#about', text: 'About' },
-  { href: '#store', text: 'Store' },
+  { href: "#workouts", text: "Workouts" },
+  { href: "#programs", text: "Programs" },
+  { href: "#healthy-living", text: "Healthy Living" },
+  { href: "#community", text: "Community" },
+  { href: "#about", text: "About" },
+  { href: "#store", text: "Store" },
 ];
-
 ---
 
 <nav class="main-nav">
-    <p class="main-nav__logo">WORKOUT</p>
-    <Icon name="mdi:hamburger-menu" class="main-nav__menu-icon" size={30} color={"white"}/>
-    <Icon name="mdi:close" class="main-nav__menu-close" size={30} color={"white"}/>
-    <ul class="main-nav__list">
-      {navLinks.map((link) => (
+  <p class="main-nav__logo">WORKOUT</p>
+  <Icon
+    name="mdi:hamburger-menu"
+    class="main-nav__menu-icon"
+    size={30}
+    color={"white"}
+  />
+  <Icon
+    name="mdi:close"
+    class="main-nav__menu-close"
+    size={30}
+    color={"white"}
+  />
+  <ul class="main-nav__list">
+    {
+      navLinks.map((link) => (
         <li class="main-nav__item">
-          <a href={link.href} class="main-nav__link">{link.text.toUpperCase()}</a>
+          <a href={link.href} class="main-nav__link">
+            {link.text.toUpperCase()}
+          </a>
         </li>
-      ))}
-    </ul>
+      ))
+    }
+  </ul>
 </nav>
 
 <script>
-    type HTMLElementSelector = string;
-    const querySelector = (selector: HTMLElementSelector) => document.querySelector(selector) as HTMLElement;
+  type HTMLElementSelector = string;
+  const querySelector = (selector: HTMLElementSelector) =>
+    document.querySelector(selector) as HTMLElement;
 
-    const toggleDisplay = (element: HTMLElement, displayStyle: string) => {
-        element.style.display = displayStyle;
-    }
+  const toggleDisplay = (element: HTMLElement, displayStyle: string) => {
+    element.style.display = displayStyle;
+  };
 
-    const addClickListener = (element: HTMLElement, handler: () => void) => {
-        element?.addEventListener('click', handler);
-    }
+  const addClickListener = (element: HTMLElement, handler: () => void) => {
+    element?.addEventListener("click", handler);
+  };
 
-    const createMenuController = (
-        menuIconSelector: HTMLElementSelector,
-        menuCloseSelector: HTMLElementSelector,
-        menuListSelector: HTMLElementSelector
-    ) => {
-        const menuIcon = querySelector(menuIconSelector);
-        const menuClose = querySelector(menuCloseSelector);
-        const menuList = querySelector(menuListSelector);
+  const createMenuController = (
+    menuIconSelector: HTMLElementSelector,
+    menuCloseSelector: HTMLElementSelector,
+    menuListSelector: HTMLElementSelector
+  ) => {
+    const menuIcon = querySelector(menuIconSelector);
+    const menuClose = querySelector(menuCloseSelector);
+    const menuList = querySelector(menuListSelector);
 
-        const openMenu = () => {
-            toggleDisplay(menuList, 'flex');
-            toggleDisplay(menuIcon, 'none');
-            toggleDisplay(menuClose, 'block');
-        }
-        
-        const closeMenu = () => {
-            toggleDisplay(menuList, 'none');
-            toggleDisplay(menuIcon, 'block');
-            toggleDisplay(menuClose, 'none');
-        }
+    const openMenu = () => {
+      toggleDisplay(menuList, "flex");
+      toggleDisplay(menuIcon, "none");
+      toggleDisplay(menuClose, "block");
+    };
 
-        addClickListener(menuIcon, openMenu);
-        addClickListener(menuClose, closeMenu);
-    }
+    const closeMenu = () => {
+      toggleDisplay(menuList, "none");
+      toggleDisplay(menuIcon, "block");
+      toggleDisplay(menuClose, "none");
+    };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        createMenuController('.main-nav__menu-icon', '.main-nav__menu-close', '.main-nav__list');
-    });
+    addClickListener(menuIcon, openMenu);
+    addClickListener(menuClose, closeMenu);
+  };
 
+  document.addEventListener("DOMContentLoaded", () => {
+    createMenuController(
+      ".main-nav__menu-icon",
+      ".main-nav__menu-close",
+      ".main-nav__list"
+    );
+  });
 </script>
 
 <style>
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #171717;
+  }
+
+  .main-nav__logo {
+    font-size: 2rem;
+    color: white;
+  }
+
+  .main-nav__menu-icon {
+    display: none;
+  }
+
+  .main-nav__list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .main-nav__item {
+    padding: 0.5rem 1rem;
+  }
+
+  .main-nav__link {
+    text-decoration: none;
+    color: white;
+  }
+
+  @media (max-width: 575px) {
     .main-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background-color: #171717;
+      max-width: 100%;
+      height: auto;
     }
 
     .main-nav__logo {
-        font-size: 2rem;
-        color: white;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
     }
 
     .main-nav__menu-icon {
-        display: none;
+      display: block;
+    }
+
+    .main-nav__menu-close {
+      display: none;
     }
 
     .main-nav__list {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      gap: 1rem;
+      position: absolute;
+      top: 3rem;
+      right: 0;
+      background-color: #1c1c1c;
+
+      width: 100%;
     }
 
     .main-nav__item {
-        padding: 0.5rem 1rem;
+      padding: 0.5rem 0;
     }
 
     .main-nav__link {
-        text-decoration: none;
-        color: white;
+      color: white;
     }
-
-    @media (max-width: 575px) {
-
-        .main-nav {
-           max-width: 100%;
-           height: auto;
-        }
-
-
-        .main-nav__logo{
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0;
-            padding: 0;
-        }
-
-        .main-nav__menu-icon {
-            display: block;
-        }
-
-        .main-nav__menu-close{
-            display: none;
-        
-        }
-
-        .main-nav__list {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            gap: 1rem;
-            position: absolute;
-            top: 3rem;
-            right: 0;
-            background-color: #1c1c1c;
-           
-        
-            width: 100%;
-        }
-
-        .main-nav__item {
-            padding: 0.5rem 0;
-        }
-
-        .main-nav__link {
-            color: white;
-        }
-    }
-
+  }
 </style>

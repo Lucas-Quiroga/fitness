@@ -1,0 +1,253 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../../public/hero.png";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">
+      WORKOUT <br /> WITH ME
+    </h1>
+    <p class="hero__description">
+      A huge selection of health and fitness content, healthy recipes and
+      transformation stories to help you get fit and stay fit!
+    </p>
+    <button class="hero__cta-button">Join Club Now!</button>
+  </div>
+  <div class="hero__image-container">
+    <div class="hero__group-container hero__group-container--orange">
+      <Icon name="mdi:run" class="hero__group-img" size={30} color={"white"} />
+      <div class="hero__group-text">4,95 <span>km</span></div>
+    </div>
+    <div class="hero__group-container hero__group-container--dark">
+      <Icon name="mdi:play" class="hero__group-img" size={28} color={"white"} />
+      <div class="hero__group-content">
+        <p class="hero__group-text hero__group-text--2">350+</p>
+        <p class="hero__group-subtitle">Videos</p>
+      </div>
+    </div>
+    <div class="hero__group-container hero__group-container--violet">
+      <p class="hero__group-text hero__group-text--3">500+</p>
+      <p class="hero__group-subtitle hero__group-subtitle--2">
+        Free Workout Videos
+      </p>
+    </div>
+    <Image
+      src={heroImage}
+      alt="Hero image showing fitness activities"
+      loading="eager"
+      width={200}
+      class="hero__image"
+    />
+  </div>
+  <button class="hero__cta-btn">Join Club Now!</button>
+  <div class="hero__featured--mobil">
+    <h4 class="hero__featured-title">AS FEATURED IN</h4>
+    <ul class="hero__featured-list">
+      <li class="hero__featured-item">
+        <img src="/logo5.png" alt="Nike logo" class="hero__featured-logo" />
+      </li>
+      <li class="hero__featured-item">
+        <img
+          src="/logo3.png"
+          alt="Featured brand logo"
+          class="hero__featured-logo"
+        />
+      </li>
+      <li class="hero__featured-item">
+        <img
+          src="/logo6.png"
+          alt="Featured brand logo"
+          class="hero__featured-logo"
+        />
+      </li>
+      <li class="hero__featured-item">
+        <img
+          src="/logo4.png"
+          alt="Featured brand logo"
+          class="hero__featured-logo"
+        />
+      </li>
+      <li class="hero__featured-item">
+        <img
+          src="/logo2.png"
+          alt="Featured brand logo"
+          class="hero__featured-logo"
+        />
+      </li>
+      <li class="hero__featured-item">
+        <img
+          src="/logo1.png"
+          alt="Featured brand logo"
+          class="hero__featured-logo"
+        />
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 575px) {
+    .hero {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+      z-index: 1;
+    }
+
+    .hero__title {
+      font-size: 50px;
+      line-height: 60px;
+      color: #fafaf9;
+      margin: 0;
+      text-align: center;
+    }
+
+    .hero__description {
+      font-size: 14px;
+      color: #efede8;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .hero__cta-button {
+      display: none;
+    }
+
+    .hero__image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      height: auto;
+      width: 100%;
+    }
+
+    .hero__group-container {
+      width: 90px;
+      height: 55px;
+      position: absolute;
+      border-radius: 12px;
+    }
+
+    .hero__group-container--orange {
+      background-color: #ef8964;
+      top: 2%;
+      right: 12%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero__group-container--dark {
+      background-color: #303030;
+      top: 40%;
+      left: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero__group-container--violet {
+      background-color: #7a29dc;
+      top: 80%;
+      right: 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .hero__group-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 0;
+    }
+
+    .hero__group-text {
+      font-size: large;
+      color: #ffffff;
+      font-weight: bold;
+      margin: 0;
+      width: auto;
+      height: auto;
+      & span {
+        font-size: small;
+        font-weight: normal;
+        margin: 0;
+      }
+    }
+
+    .hero__group-text--2 {
+      font-size: medium;
+    }
+
+    .hero__group-subtitle {
+      font-size: small;
+      color: #efede8;
+      margin: 0;
+    }
+
+    .hero__cta-btn {
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 600;
+      background-color: #e6533c;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      height: 40px;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;
+    }
+
+    .hero__featured--mobil {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+      overflow-x: hidden;
+    }
+
+    .hero__featured-title {
+      font-size: 14px;
+      line-height: 20px;
+      color: #efede8;
+      margin: 0;
+    }
+
+    .hero__featured-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      gap: 15px;
+    }
+
+    .hero__featured-item {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero__featured-logo {
+      width: auto;
+      height: auto;
+      object-fit: contain;
+  }
+</style>
