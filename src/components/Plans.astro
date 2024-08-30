@@ -56,7 +56,8 @@ const CARDS_INFO: Card[] = [
                 <img
                   class="programs__slide-image"
                   src={card.image}
-                  alt={`${card.title} image`}
+                  alt={`${card.title}`}
+                  loading="lazy"
                 />
               )}
             </div>
@@ -90,6 +91,10 @@ const CARDS_INFO: Card[] = [
       color: #efede8;
       font-size: 14px;
       line-height: 20px;
+    }
+
+    .programs__swiper {
+      margin: 1rem 0;
     }
 
     swiper-slide {

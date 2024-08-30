@@ -1,0 +1,203 @@
+---
+interface MembershipOption {
+  title: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+  isPremium?: boolean;
+}
+
+const membershipOptions: MembershipOption[] = [
+  {
+    title: "Join for Free",
+    description:
+      "Reach your fitness goals or maintain your healthy lifestyle with professional training and support from a positive and active online community.",
+    features: [
+      "~600 Full-Length Workout Videos",
+      "Customizable Calendar",
+      "Healthy Recipes",
+      "Health and Fitness Articles",
+      "Positive and Supportive Online Community",
+      "No Credit Card Needed",
+    ],
+    ctaText: "See More",
+  },
+  {
+    title: "WO Plus",
+    description:
+      "WO Plus includes everything you get with a free membership and adds brand new convenience features, fitness tools, and unique content.",
+    features: [
+      "Ads-Free Website and Videos",
+      "Surprise Me Workout Selection Tool",
+      "Statistics for Your Activities",
+      "Enter and Track Custom Workouts",
+      "FB Plus Exclusive Workouts",
+      "Trackers to See Your Progress",
+      "FB Plus Content and Challenges",
+      "Video Tags",
+      "FB Plus Routines",
+      "Rest Day Complete",
+    ],
+    ctaText: "Join Club Now!",
+    isPremium: true,
+  },
+];
+---
+
+<section class="membership">
+  <h2 class="membership__title">Membership</h2>
+  <div class="membership__options">
+    {
+      membershipOptions.map((option) => (
+        <article
+          class={`membership-card ${option.isPremium ? "membership-card--premium" : ""}`}
+        >
+          <h3 class="membership-card__title">{option.title}</h3>
+          <p class="membership-card__description">{option.description}</p>
+          <ul class="membership-card__features">
+            {option.features.map((feature) => (
+              <li class="membership-card__feature">{feature}</li>
+            ))}
+          </ul>
+          <button
+            class={`membership-card__cta ${option.isPremium ? "membership-card__cta--premium" : ""}`}
+          >
+            {option.ctaText}
+            {!option.isPremium && (
+              <img
+                src="/arrowright.png"
+                alt="Arrow right"
+                class="membership-card__cta-icon"
+                loading="lazy"
+              />
+            )}
+          </button>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @media (max-width: 575px) {
+    .membership {
+      padding: 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .membership__options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .membership__title {
+      font-size: 30px;
+      line-height: 40px;
+      color: #fafaf9;
+      margin: 0;
+      font-weight: 300;
+      width: 100%;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 20px;
+
+      text-align: center;
+    }
+
+    .membership-card {
+      height: 450px;
+      width: 100%;
+      background-color: #232532;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .membership-card--premium {
+      background-color: #323443;
+    }
+
+    .membership-card__title {
+      font-size: 24px;
+      line-height: 30px;
+      color: #fafaf9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .membership-card__description {
+      font-size: 14px;
+      color: #efede8;
+      padding: 0 20px;
+    }
+
+    .membership-card__features {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .membership-card__feature {
+      font-size: 14px;
+      color: #efede8;
+    }
+
+    .membership-card__cta {
+      background-color: transparent;
+      color: #0070c9;
+      font-size: 16px;
+      line-height: 26px;
+      border: none;
+      font-weight: 600;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 10px;
+    }
+
+    .membership-card__cta-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .membership-card__cta:hover {
+      color: #005b8a;
+      text-decoration: underline;
+      & img {
+        width: 20px;
+        height: 20px;
+        transform: translateX(5px);
+        transition: transform 0.3s ease-out;
+      }
+    }
+
+    .membership-card__cta-icon:hover {
+      transform: translateX(5px);
+    }
+
+    .membership-card__cta--premium {
+      background-color: #0070c9;
+      color: #ffffff;
+      width: auto;
+      margin: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 26px;
+      height: auto;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .membership-card__cta--premium:hover {
+      background-color: #005b8a;
+      color: #ffffff;
+    }
+  }
+</style>

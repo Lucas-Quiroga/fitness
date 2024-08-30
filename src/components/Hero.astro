@@ -16,18 +16,18 @@ import { Icon } from "astro-icon/components";
     <button class="hero__cta-button">Join Club Now!</button>
   </div>
   <div class="hero__image-container">
-    <div class="hero__group-container hero__group-container--orange">
+    <div class="hero__group-container hero__group-container--orange animate__animated animate__fadeInRight">
       <Icon name="mdi:run" class="hero__group-img" size={30} color={"white"} />
       <div class="hero__group-text">4,95 <span>km</span></div>
     </div>
-    <div class="hero__group-container hero__group-container--dark">
+    <div class="hero__group-container hero__group-container--dark animate__animated animate__fadeInLeft animate__slow">
       <Icon name="mdi:play" class="hero__group-img" size={28} color={"white"} />
-      <div class="hero__group-content">
+      <div class="hero__group-content ">
         <p class="hero__group-text hero__group-text--2">350+</p>
         <p class="hero__group-subtitle">Videos</p>
       </div>
     </div>
-    <div class="hero__group-container hero__group-container--violet">
+    <div class="hero__group-container hero__group-container--violet animate__animated animate__fadeInRight animate__slower">
       <p class="hero__group-text hero__group-text--3">500+</p>
       <p class="hero__group-subtitle hero__group-subtitle--2">
         Free Workout Videos
@@ -35,7 +35,7 @@ import { Icon } from "astro-icon/components";
     </div>
     <Image
       src={heroImage}
-      alt="Hero image showing fitness activities"
+      alt="Hero showing fitness activities"
       loading="eager"
       width={200}
       class="hero__image"
@@ -210,7 +210,14 @@ import { Icon } from "astro-icon/components";
       justify-content: center;
       align-items: center;
       margin: 2rem auto;
+      transition: transform 0.3s ease;
     }
+
+    .hero__cta-btn:hover {
+  background-color: #ef8964;
+  transform: scaleX(1.1); /* Ensancha el botón un 10% */
+}
+
 
     .hero__featured--mobil {
       display: flex;
@@ -238,7 +245,17 @@ import { Icon } from "astro-icon/components";
       padding: 0;
       width: 100%;
       gap: 15px;
+      animation: marquee 40s linear infinite;
     }
+
+    @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
     .hero__featured-item {
       margin: 0;

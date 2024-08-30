@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import relaxImg from "../../public/relax.png";
+import fitnessPersonImg from "../../public/fitnessperson.png";
+
+interface FeatureProps {
+  title: string;
+  description: string;
+  imageUrl: ImageMetadata;
+  imageAlt: string;
+  isReversed?: boolean;
+}
+
+const features: FeatureProps[] = [
+  {
+    title: "Work out at home for free.",
+    description:
+      "We believe fitness should be accessible to everyone, everywhere, regardless of income or access to a gym. With hundreds of professional workouts, healthy recipes and informative articles, as well as one of the most positive communities on the web, you'll have everything you need to reach your personal fitness goals – for free!",
+    imageUrl: relaxImg,
+    imageAlt: "Person working out at home",
+  },
+  {
+    title: "Get more with low-cost training programs and advanced features.",
+    description:
+      "Take your fitness journey to the next level with our affordable training programs and advanced features. Designed for those who want to push their limits, our premium offerings provide personalized guidance, in-depth analytics, and exclusive content to help you achieve your goals faster and more effectively.",
+    imageUrl: fitnessPersonImg,
+    imageAlt: "Person using advanced fitness features on a device",
+    isReversed: true,
+  },
+];
+---
+
+<section class="features">
+  {
+    features.map((feature) => (
+      <div class={`feature ${feature.isReversed ? "feature--reversed" : ""}`}>
+        <div class="feature__content">
+          <h2 class="feature__title">{feature.title}</h2>
+          <p class="feature__description">{feature.description}</p>
+          <button class="feature__button">
+            See More
+            <img
+              src="/arrowright.png"
+              alt="Arrow right"
+              class="feature__button-icon"
+              loading="lazy"
+            />
+          </button>
+        </div>
+        <div class="feature__image-wrapper">
+          <Image
+            src={feature.imageUrl}
+            alt={feature.imageAlt}
+            class="feature__image"
+          />
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  @media (max-width: 575px) {
+    .features {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 1rem;
+    }
+
+    .feature__title {
+      font-size: 24px;
+      line-height: 30px;
+      color: #fafaf9;
+    }
+
+    .feature__description {
+      font-size: 14px;
+      color: #efede8;
+    }
+
+    .feature__button {
+      background-color: transparent;
+      color: #0070c9;
+      font-size: 16px;
+      line-height: 26px;
+      border: none;
+      font-weight: 600;
+      display: flex;
+      width: 110px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feature__button:hover {
+      color: #005b8a;
+      text-decoration: underline;
+
+      & img {
+        width: 20px;
+        height: 20px;
+        transform: translateX(5px);
+        transition: transform 0.3s ease-out;
+      }
+    }
+
+    .feature__button-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .feature__image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      overflow-x: hidden;
+      padding: 1rem 0;
+    }
+
+    .feature__image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  }
+</style>
