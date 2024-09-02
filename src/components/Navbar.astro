@@ -95,22 +95,26 @@ const navLinks: NavLink[] = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     background-color: #171717;
+    height: 19px;
+    max-width: 100%;
   }
 
   .main-nav__logo {
-    font-size: 2rem;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
     color: white;
   }
 
-  .main-nav__menu-icon {
+  .main-nav__menu-icon,
+  .main-nav__menu-close {
     display: none;
   }
 
   .main-nav__list {
     display: flex;
-    gap: 2rem;
     list-style: none;
   }
 
@@ -121,12 +125,15 @@ const navLinks: NavLink[] = [
   .main-nav__link {
     text-decoration: none;
     color: white;
+    font-size: 14px;
+    font-weight: 400;
   }
 
   @media (max-width: 575px) {
     .main-nav {
       max-width: 100%;
       height: auto;
+      padding: 1rem 1rem;
     }
 
     .main-nav__logo {
