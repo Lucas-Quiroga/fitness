@@ -44,49 +44,38 @@ const navLinks: NavLink[] = [
 </nav>
 
 <script>
-  type HTMLElementSelector = string;
-  const querySelector = (selector: HTMLElementSelector) =>
-    document.querySelector(selector) as HTMLElement;
-
-  const toggleDisplay = (element: HTMLElement, displayStyle: string) => {
-    element.style.display = displayStyle;
-  };
-
-  const addClickListener = (element: HTMLElement, handler: () => void) => {
-    element?.addEventListener("click", handler);
-  };
-
-  const createMenuController = (
-    menuIconSelector: HTMLElementSelector,
-    menuCloseSelector: HTMLElementSelector,
-    menuListSelector: HTMLElementSelector
-  ) => {
-    const menuIcon = querySelector(menuIconSelector);
-    const menuClose = querySelector(menuCloseSelector);
-    const menuList = querySelector(menuListSelector);
-
-    const openMenu = () => {
-      toggleDisplay(menuList, "flex");
-      toggleDisplay(menuIcon, "none");
-      toggleDisplay(menuClose, "block");
-    };
-
-    const closeMenu = () => {
-      toggleDisplay(menuList, "none");
-      toggleDisplay(menuIcon, "block");
-      toggleDisplay(menuClose, "none");
-    };
-
-    addClickListener(menuIcon, openMenu);
-    addClickListener(menuClose, closeMenu);
-  };
-
   document.addEventListener("DOMContentLoaded", () => {
-    createMenuController(
-      ".main-nav__menu-icon",
-      ".main-nav__menu-close",
-      ".main-nav__list"
-    );
+    const menuIcon = document.querySelector(
+      ".main-nav__menu-icon"
+    ) as HTMLElement;
+    const menuClose = document.querySelector(
+      ".main-nav__menu-close"
+    ) as HTMLElement;
+    const menuList = document.querySelector(".main-nav__list") as HTMLElement;
+
+    const toggleMenu = (show: any) => {
+      menuList.style.display = show ? "flex" : "none";
+      menuIcon.style.display = show ? "none" : "block";
+      menuClose.style.display = show ? "block" : "none";
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > 575) {
+        menuList.style.display = "flex";
+        menuIcon.style.display = "none";
+        menuClose.style.display = "none";
+      } else {
+        toggleMenu(false);
+      }
+    };
+
+    menuIcon.addEventListener("click", () => toggleMenu(true));
+    menuClose.addEventListener("click", () => toggleMenu(false));
+
+    window.addEventListener("resize", handleResize);
+
+    // Llamada inicial para establecer el estado correcto
+    handleResize();
   });
 </script>
 
