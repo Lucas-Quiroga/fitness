@@ -38,8 +38,6 @@ const CARDS_INFO: Card[] = [
     </p>
   </div>
 
-  <!-- desktop -->
-
   <div class="programs__slider--desktop">
     <swiper-container
       className="programs__swiper"
@@ -76,35 +74,6 @@ const CARDS_INFO: Card[] = [
       }
     </swiper-container>
   </div>
-  <!-- mobile -->
-  <div class="programs__slider">
-    <swiper-container class="programs__swiper" pagination="true" loop="true">
-      {
-        CARDS_INFO.map((card, index) => (
-          <swiper-slide
-            class={`programs__slide programs__slide-${index}`}
-            key={index}
-            space-between="20"
-          >
-            <div class="programs__slide-content">
-              <div class="programs__text">
-                <h4 class="programs__slide-title">{card.title}</h4>
-                <p class="programs__slide-description">{card.description}</p>
-              </div>
-              {card.image && (
-                <img
-                  class="programs__slide-image"
-                  src={card.image}
-                  alt={`${card.title}`}
-                  loading="lazy"
-                />
-              )}
-            </div>
-          </swiper-slide>
-        ))
-      }
-    </swiper-container>
-  </div>
 </section>
 
 <style>
@@ -116,10 +85,10 @@ const CARDS_INFO: Card[] = [
     .programs {
       display: flex;
       flex-direction: column;
-      padding: 1rem 1rem;
+      padding: 1rem;
       justify-content: center;
       align-items: center;
-      margin: 15rem auto 6rem auto;
+      margin: 15rem auto 6rem;
       width: 1250px;
       gap: 50px;
     }
@@ -135,18 +104,18 @@ const CARDS_INFO: Card[] = [
     .programs__title {
       font-size: 40px;
       line-height: 50px;
-      color: #fafaf9;
+      color: var(--color-white);
       margin: 0;
     }
 
     .programs__description {
-      color: #efede8d2;
+      color: var(--color-light-gray);
       font-size: 16px;
       line-height: 24px;
     }
 
     .programs__slide-0 {
-      background-color: #323443;
+      background-color: var(--color-dark-gray);
     }
 
     .programs__slide-1 {
@@ -169,8 +138,8 @@ const CARDS_INFO: Card[] = [
     swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #323443;
-      border-radius: 12px;
+      background: var(--color-dark-gray);
+      border-radius: var(--border-radius);
       width: 304px;
       height: 190px;
       display: flex;
@@ -201,14 +170,14 @@ const CARDS_INFO: Card[] = [
     .programs__slide-title {
       font-size: 16px;
       line-height: 24px;
-      color: #fafaf9;
+      color: var(--color-white);
       margin: 0;
     }
 
     .programs__slide-description {
       font-size: 14px;
       line-height: 20px;
-      color: #efede8;
+      color: var(--color-light-gray);
     }
   }
 
@@ -216,7 +185,7 @@ const CARDS_INFO: Card[] = [
     .programs {
       display: flex;
       flex-direction: column;
-      padding: 1rem 1rem;
+      padding: 1rem;
     }
 
     .programs__intro {
@@ -226,12 +195,12 @@ const CARDS_INFO: Card[] = [
     .programs__title {
       font-size: 30px;
       line-height: 40px;
-      color: #fafaf9;
+      color: var(--color-white);
       margin: 0;
     }
 
     .programs__description {
-      color: #efede8;
+      color: var(--color-light-gray);
       font-size: 14px;
       line-height: 20px;
     }
@@ -243,7 +212,7 @@ const CARDS_INFO: Card[] = [
     swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #323443;
+      background: var(--color-dark-gray);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -262,7 +231,7 @@ const CARDS_INFO: Card[] = [
     }
 
     .programs__slide-0 {
-      background-color: #323443;
+      background-color: var(--color-dark-gray);
     }
 
     .programs__slide-1 {
@@ -286,13 +255,13 @@ const CARDS_INFO: Card[] = [
     }
 
     .programs__slide-title {
-      color: #fafaf9;
+      color: var(--color-white);
       font-size: 18px;
       margin: 0;
     }
 
     .programs__slide-description {
-      color: #efede8;
+      color: var(--color-light-gray);
       font-size: 14px;
       margin: 0;
     }

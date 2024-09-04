@@ -20,15 +20,101 @@ const { title } = Astro.props;
   </head>
   <body>
     <Navbar />
-
     <slot />
+    <button id="back-to-top" class="back-to-top">↑ Back to Top</button>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTopButton = document.getElementById("back-to-top");
+      if (backToTopButton === null) {
+        return;
+      }
+
+      const updateButtonStyles = (mobile: MediaQueryList) => {
+        if (mobile.matches) {
+          backToTopButton.innerHTML = "↑";
+          backToTopButton.style.fontSize = "1.5rem";
+          backToTopButton.style.width = "50px";
+          backToTopButton.style.height = "50px";
+        } else {
+          backToTopButton.innerHTML = "↑ Back to Top";
+          backToTopButton.style.fontSize = "";
+          backToTopButton.style.width = "";
+          backToTopButton.style.height = "";
+        }
+      };
+
+      const mobile = window.matchMedia("(max-width: 575px)");
+      updateButtonStyles(mobile);
+
+      mobile.addEventListener("change", () => {
+        updateButtonStyles(mobile);
+      });
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
 </html>
 <style is:global>
   :root {
     max-width: 1440px;
     margin: 0 auto;
     box-sizing: border-box;
+
+    --color-white: #fafaf9;
+    --color-light-gray: #efede8d2;
+    --color-orange: #ef8964;
+    --color-dark-gray: #303030;
+    --color-violet: #7a29dc;
+    --color-cta-bg: #e6533c;
+    --color-cta-hover: var(--color-orange);
+
+    --font-size-title: 172px;
+    --line-height-title: 170px;
+    --font-size-description: 16px;
+    --line-height-description: 24px;
+    --font-size-cta: 18px;
+    --line-height-cta: 22px;
+
+    --border-radius: 12px;
+    --border-radius-cta: 10px;
+
+    --transition-ease: transform 0.3s ease;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--color-cta-bg);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
   }
 
   html {

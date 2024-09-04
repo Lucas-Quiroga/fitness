@@ -3,9 +3,6 @@ import { Image } from "astro:assets";
 import heroImage from "../../public/hero.png";
 import heroImageDesktop from "../../public/hero.png";
 import { Icon } from "astro-icon/components";
-
-// api de tamaño de pantalla de mobile
-
 ---
 
 <section class="hero">
@@ -20,20 +17,25 @@ import { Icon } from "astro-icon/components";
     <button class="hero__cta-button">Join Club Now!</button>
   </div>
   <div class="hero__image-container">
-    <div class="hero__group-container hero__group-container--orange animate__animated animate__fadeInRight">
+    <div
+      class="hero__group-container hero__group-container--orange animate__animated animate__fadeInRight"
+    >
       <Icon name="mdi:run" class="hero__group-img" size={30} color={"white"} />
       <div class="hero__group-text">4,95 <span>km</span></div>
     </div>
-    <div class="hero__group-container hero__group-container--dark animate__animated animate__fadeInLeft animate__slow">
+    <div
+      class="hero__group-container hero__group-container--dark animate__animated animate__fadeInLeft animate__slow"
+    >
       <Icon name="mdi:play" class="hero__group-img" size={28} color={"white"} />
-      <div class="hero__group-content ">
+      <div class="hero__group-content">
         <p class="hero__group-text hero__group-text--2">350+</p>
         <p class="hero__group-subtitle">Videos</p>
         <p class="hero__group-subtitle--desktop">Video tutorial</p>
-
       </div>
     </div>
-    <div class="hero__group-container hero__group-container--violet animate__animated animate__fadeInRight animate__slower">
+    <div
+      class="hero__group-container hero__group-container--violet animate__animated animate__fadeInRight animate__slower"
+    >
       <p class="hero__group-text hero__group-text--3">500+</p>
       <p class="hero__group-subtitle hero__group-subtitle--2">
         Free Workout Videos
@@ -51,7 +53,6 @@ import { Icon } from "astro-icon/components";
       alt="Hero showing fitness activities"
       loading="eager"
       class="hero__image-desktop"
-    
     />
   </div>
   <button class="hero__cta-btn">Join Club Now!</button>
@@ -100,11 +101,9 @@ import { Icon } from "astro-icon/components";
   </div>
 </section>
 
-
-
 <style>
-@media (min-width: 1440px) {
-.hero {
+  @media (min-width: 1440px) {
+    .hero {
       width: 1256px;
       height: auto;
       display: flex;
@@ -114,192 +113,179 @@ import { Icon } from "astro-icon/components";
       position: relative;
       margin: auto;
       gap: 30px;
-  }
-
-  .hero__title{
-    font-size: 172px;
-    line-height: 170px;
-    color: #FAFAF9;
-    margin: 60px 0 0 0;
-    /* margin: 0 auto 0 0; */
-  }
-
-  .hero__description{
-    font-size: 16px;
-    line-height: 24px;
-    color: #efede8d2;
-    width: 560px;
-  }
-
-  .hero__image{
-    display: none;
-  }
-
-  .hero__image-desktop {
-    position: absolute;
-    top: 150px;
-    right: 50px;
-    width: 409px;
-    height: 684px;
-    object-fit: cover;
-  }
-
-  .hero__cta-button{
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 600;
-    background-color: #e6533c;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    height: 70px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: auto;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .hero__cta-button:hover {
-    background-color: #ef8964;
-    transform: scaleX(1.1); /* Ensancha el botón un 10% */
-  }
-
-  .hero__group-container {
-      position: absolute;
-      border-radius: 12px;
     }
 
-  .hero__group-container--orange {
-      width: 180px;
-      height: 110px;
-      background-color: #ef8964;
-      top: 20%;
-      z-index: 1;
-      right: 0;
+    .hero__title {
+      font-size: var(--font-size-title);
+      line-height: var(--line-height-title);
+      color: var(--color-white);
+      margin: 30px 0 60px 0;
+    }
+
+    .hero__description {
+      font-size: var(--font-size-description);
+      line-height: var(--line-height-description);
+      color: var(--color-light-gray);
+      width: 560px;
+    }
+
+    .hero__image {
+      display: none;
+    }
+
+    .hero__image-desktop {
+      position: absolute;
+      top: 100px;
+      right: 60px;
+      width: 409px;
+      height: 684px;
+      object-fit: cover;
+    }
+
+    .hero__cta-button {
+      font-size: var(--font-size-cta);
+      line-height: var(--line-height-cta);
+      font-weight: 600;
+      background-color: var(--color-cta-bg);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--border-radius-cta);
+      height: 70px;
+      width: 200px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      & .hero__group-img {
-        width: 30px;
-        height: 30px;
-        margin-right: auto;
-        margin-left: 1rem;
-        color: #ffffff;
-        border-radius: 50%;
-        background-color: #EFA082;
-      }
-   
+      margin-right: auto;
+      transition: var(--transition-ease);
+      cursor: pointer;
     }
 
-    .hero__group-text{
-      font-size: 48px;
-      line-height: 50px;
-      font-weight: bold;
-      color: #FAFAF9;
+    .hero__cta-button:hover {
+      background-color: var(--color-cta-hover);
+      transform: scaleX(1.1);
+    }
 
-      & span{
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: normal;
+    .hero__group-container {
+      position: absolute;
+      border-radius: var(--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .hero__group-container--orange {
+      width: 180px;
+      height: 110px;
+      background-color: var(--color-orange);
+      top: 10%;
+      right: 0;
+      flex-direction: column;
+
+      & .hero__group-img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        margin-left: 1rem;
+        color: var(--color-white);
+        border-radius: 50%;
+        background-color: #efa082;
+        margin-right: auto;
+      }
+
+      & .hero__group-text {
+        font-size: 48px;
+        line-height: 50px;
+        font-weight: bold;
+        color: var(--color-white);
+        margin: 0;
+
+        & span {
+          font-size: 16px;
+          line-height: 24px;
+          font-weight: 400;
+          color: var(--color-light-gray);
+        }
       }
     }
 
     .hero__group-container--dark {
-      background-color: #303030;
+      background-color: var(--color-dark-gray);
       width: 206px;
       height: 96px;
       top: 68%;
-      right: 30%;
-      
-      z-index: 1;
-      display: flex;
+      right: 31%;
       gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
 
       & .hero__group-img {
         width: 40px;
         height: 40px;
         margin: 0;
-        color: #ffffff;
+        color: var(--color-white);
         border-radius: 50%;
-        background-color: #EF8963;
-
+        background-color: var(--color-cta-hover);
       }
 
-      & .hero__group-content{
+      & .hero__group-content {
         width: 108px;
         height: 56px;
       }
 
-      & .hero__group-text{
+      & .hero__group-text {
         font-size: 24px;
         line-height: 24px;
         font-weight: 600;
-        color: #FAFAF9;
+        color: var(--color-white);
         margin: 0;
       }
 
-      & .hero__group-subtitle--desktop{
-        color: #EFEDE8;
+      & .hero__group-subtitle--desktop {
+        color: var(--color-light-gray);
       }
 
-      & .hero__group-subtitle{
+      & .hero__group-subtitle {
         display: none;
       }
-    
     }
 
     .hero__group-container--violet {
-      background-color: #7a29dc;
-      top: 77%;
-      right: -80px;
-      display: flex;
+      background-color: var(--color-violet);
       width: 193px;
       height: 98px;
-      z-index: 1;
+      top: 77%;
+      right: -80px;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 12px;
       text-align: start;
 
-      & .hero__group-text--3{
+      & .hero__group-text--3 {
         font-size: 40px;
         line-height: 40px;
         font-weight: 600;
-        color: #FAFAF9;
+        color: var(--color-white);
         margin: 0;
         margin-right: 1.5rem;
       }
 
-      & .hero__group-subtitle--2{
+      & .hero__group-subtitle--2 {
         font-size: 13px;
         line-height: 20px;
-        color: #EFEDE8;
+        color: var(--color-light-gray);
         margin: 0;
       }
-
     }
 
-    .hero__cta-btn{
+    .hero__cta-btn {
       display: none;
     }
   }
 
-  .hero__featured--mobil{
+  .hero__featured--mobil {
     display: flex;
     flex-direction: column;
     gap: 33px;
   }
 
-  .hero__featured-title{
+  .hero__featured-title {
     font-size: 14px;
     line-height: 22px;
     font-weight: 600;
@@ -307,7 +293,7 @@ import { Icon } from "astro-icon/components";
     margin: 0;
   }
 
-  .hero__featured-list{
+  .hero__featured-list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -315,15 +301,13 @@ import { Icon } from "astro-icon/components";
     margin: 0;
     padding: 0;
     gap: 15px;
-
   }
-
 
   @media (max-width: 575px) {
     .hero {
       display: flex;
       flex-direction: column;
-      padding: 2rem 1rem;
+      padding: 1rem 1rem;
       z-index: 1;
       max-width: 100%;
     }
@@ -331,14 +315,14 @@ import { Icon } from "astro-icon/components";
     .hero__title {
       font-size: 50px;
       line-height: 60px;
-      color: #fafaf9;
+      color: var(--color-white);
       margin: 0;
       text-align: center;
     }
 
     .hero__description {
       font-size: 14px;
-      color: #efede8;
+      color: var(--color-light-gray);
       text-align: center;
       width: fit-content;
     }
@@ -364,49 +348,40 @@ import { Icon } from "astro-icon/components";
 
     .hero__image {
       display: block;
-    
     }
-
- 
 
     .hero__group-container {
       width: 90px;
       height: 55px;
       position: absolute;
-      border-radius: 12px;
+      border-radius: var(--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .hero__group-container--orange {
-      background-color: #ef8964;
+      background-color: var(--color-orange);
       top: 2%;
       right: 12%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .hero__group-container--dark {
-      background-color: #303030;
+      background-color: var(--color-dark-gray);
       top: 40%;
       left: 5%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .hero__group-container--violet {
-      background-color: #7a29dc;
+      background-color: var(--color-violet);
       top: 80%;
       right: 10%;
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 12px;
       text-align: center;
     }
 
-    .hero__group-content {
+    .hero__group-content,
+    .hero__group-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -417,16 +392,16 @@ import { Icon } from "astro-icon/components";
 
     .hero__group-text {
       font-size: large;
-      color: #ffffff;
+      color: var(--color-white);
       font-weight: bold;
-      margin: 0;
       width: auto;
       height: auto;
-      & span {
-        font-size: small;
-        font-weight: normal;
-        margin: 0;
-      }
+    }
+
+    .hero__group-text span {
+      font-size: small;
+      font-weight: normal;
+      margin: 0;
     }
 
     .hero__group-text--2 {
@@ -435,7 +410,7 @@ import { Icon } from "astro-icon/components";
 
     .hero__group-subtitle {
       font-size: small;
-      color: #efede8;
+      color: var(--color-light-gray);
       margin: 0;
     }
 
@@ -443,29 +418,27 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
 
-
     .hero__cta-btn {
-      font-size: 18px;
-      line-height: 22px;
+      font-size: var(--font-size-cta);
+      line-height: var(--line-height-cta);
       font-weight: 600;
-      background-color: #e6533c;
-      color: #ffffff;
+      background-color: var(--color-cta-bg);
+      color: var(--color-white);
       border: none;
-      border-radius: 6px;
+      border-radius: var(--border-radius-cta);
       height: 40px;
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 2rem auto;
-      transition: transform 0.3s ease;
+      transition: var(--transition-ease);
     }
 
     .hero__cta-btn:hover {
-  background-color: #ef8964;
-  transform: scaleX(1.1); /* Ensancha el botón un 10% */
-}
-
+      background-color: var(--color-cta-hover);
+      transform: scaleX(1.1);
+    }
 
     .hero__featured--mobil {
       display: flex;
@@ -480,7 +453,7 @@ import { Icon } from "astro-icon/components";
     .hero__featured-title {
       font-size: 14px;
       line-height: 20px;
-      color: #efede8;
+      color: var(--color-light-gray);
       margin: 0;
     }
 
@@ -497,13 +470,13 @@ import { Icon } from "astro-icon/components";
     }
 
     @keyframes marquee {
-    0% {
-      transform: translateX(0%);
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
 
     .hero__featured-item {
       margin: 0;
@@ -514,5 +487,6 @@ import { Icon } from "astro-icon/components";
       width: auto;
       height: auto;
       object-fit: contain;
+    }
   }
 </style>
