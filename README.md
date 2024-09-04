@@ -1,4 +1,4 @@
-# Exploration Workout & Fitness - Landing Page 💪🏼
+# Workout & Fitness - Landing Page 💪🏼
 
 Bienvenido a Exploration Workout & Fitness, una landing page diseñada con elegancia y funcionalidad en mente, ideal para gimnasios, entrenadores personales, y entusiastas del fitness.
 
